@@ -8,4 +8,6 @@ services:
       - 8000:8000
     image: app:recipe_api
     container_name: recipe_api
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: >
+      sh -c "cd recipe_api &&
+            python3 manage.py runserver 0.0.0.0:8000"
