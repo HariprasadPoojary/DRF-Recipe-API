@@ -9,3 +9,21 @@ services:
     image: app:recipe_api
     container_name: recipe_api_container
     command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - DB_HOST=db
+      - DB_NAME=app
+      - DB_USER=postgres
+      - DB_PASS=haridx12
+    depends_on:
+      - db
+  db:
+    image: postgres:14-alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=haridx12
+    container_name: postgres_db
+    ports:
+      - 5432:5432
