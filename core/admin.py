@@ -43,5 +43,20 @@ class UserAdmin(BaseUserAdmin):
         ),
     )
 
+    add_fieldsets = (
+        (
+            None,
+            {
+                "classes": ("wide", "extrapretty"),
+                "fields": (
+                    "name",
+                    "email",
+                    "password1",
+                    "password2",
+                ),
+            },
+        ),
+    )
+
 
 admin.site.register(User, UserAdmin)

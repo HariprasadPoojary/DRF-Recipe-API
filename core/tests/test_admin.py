@@ -34,7 +34,15 @@ class AdminSiteTests(TestCase):
         """Test that the user edit page works"""
         # generate url rather than hard coding it
         url = reverse("admin:core_user_change", args=[self.user.id])
-        # sample url -> /admin/core/user/1 where 1 is user id
+        # sample url -> /admin/core/user/1/change/ where 1 is user id
+        res = self.client.get(url)
+        # test
+        self.assertEqual(res.status_code, 200)
+
+    def test_user_create_page(self):
+        """Test that the user create page works"""
+        # generate url rather than hard coding it
+        url = reverse("admin:core_user_add")
         res = self.client.get(url)
         # test
         self.assertEqual(res.status_code, 200)
