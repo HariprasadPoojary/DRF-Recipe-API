@@ -43,6 +43,7 @@ class AdminSiteTests(TestCase):
         """Test that the user create page works"""
         # generate url rather than hard coding it
         url = reverse("admin:core_user_add")
+        # sample url -> /admin/core/user/add
         res = self.client.get(url)
         # test
         self.assertEqual(res.status_code, 200)
